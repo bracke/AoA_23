@@ -41,7 +41,7 @@ begin -- AOA_09_1
                exit All_Levels;
             end if;
 
-            if L = Diff'Last then -- 10 levels of differences not enough
+            if L = Diff'Last then -- 18 levels of differences not enough
                raise Program_Error with "need more than 10 levels for " & Line;
             end if;
          end loop All_Levels;
