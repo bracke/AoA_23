@@ -8,7 +8,9 @@ procedure AOA_09_1 is
 
    package Sequences is new Ada.Containers.Vectors (Index_Type => Positive, Element_Type => Integer);
 
-   type Difference_Set is array (1 .. 19) of Sequences.Vector; -- 1 => input, 2 .. 19 => differences
+   Num_Levels : constant := 19;
+
+   type Difference_Set is array (1 .. Num_Levels + 1) of Sequences.Vector; -- 1 => input, 2 .. Num_Levels + 1 => differences
 
    Input : Ada.Text_IO.File_Type;
    Diff  : Difference_Set;
@@ -41,8 +43,8 @@ begin -- AOA_09_1
                exit All_Levels;
             end if;
 
-            if L = Diff'Last then -- 18 levels of differences not enough
-               raise Program_Error with "need more than 10 levels for " & Line;
+            if L = Diff'Last then -- Num_Levels levels of differences not enough
+               raise Program_Error with "need more than" & Num_Levels'Image & " levels for " & Line;
             end if;
          end loop All_Levels;
 
